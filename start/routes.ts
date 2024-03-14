@@ -15,14 +15,14 @@ import { middleware } from '#start/kernel'
 
 router.group(()=>{
     router.post('/login',[AuthController,'login']);
+
 }).prefix('/auth')
 
 
-
 router.group(()=>{
-    
+    router.post('/logout',[AuthController,'logout'])
+}).prefix('/in').use(middleware.auth())
 
-}).prefix('admin').use(middleware.auth())
 
 
 

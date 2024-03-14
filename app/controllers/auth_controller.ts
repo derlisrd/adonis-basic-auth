@@ -17,13 +17,15 @@ export default class AuthController {
             return response.json({success:true,results:token})
 
         } catch (error) {
+            
             const authError = new AuthException()
-            return response.status(error.status).json({success:false,message: authError.mensaje(error.status)})
+            return response.status(500).json({success:false,message: authError.mensaje(error.status)})
         }
     }
-    async logout({response} : HttpContext){
+    async logout({response,auth} : HttpContext){
         try {
-            return response.json({success:true})
+            
+            return response.json({success:true, result: auth})
         } catch (error) {
             return response.status(error.status).json({success:false,message: 'Error de servidor'})
         }

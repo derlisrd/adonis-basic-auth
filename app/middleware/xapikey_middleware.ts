@@ -12,9 +12,8 @@ export default class XapikeyMiddleware {
     const apiKey = request.header('x-api-key')
     
     const foundApi = env.get('X_API_KEY')
-
     if (!apiKey || apiKey !== foundApi) {
-      return response.status(401).json({ success:false,message:'API KEY invalido' })
+      return response.status(401).json({ success:false,message:'API KEY invalida' })
     }
     /**
      * Call next method in the pipeline and return its output
